@@ -1,0 +1,20 @@
+[
+    {
+        "_id": 1,
+        "country": "canada",
+        "province": "quebec",
+        "industry": "all",
+        "for": "general worker",
+        "documentation": "https://www.canada.ca/en/revenue-agency/services/benefits/apply-for-cerb-with-cra.html"
+    },
+    {
+        "_id": 2,
+        "country": "canada",
+        "province": "quebec",
+        "city": "montreal",
+        "industry": "restaurant",
+        "for": "worker",
+        "documentation": "https://www.mtlrestorelieffund.org/home"
+    }
+]
+
