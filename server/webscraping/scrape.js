@@ -8,6 +8,8 @@ const assert = require('assert');
 const util = require('util');
 var async = require("async");
 
+let mongoConnect = process.env.MONGOURI
+
 
 const getUrl = util.promisify(request);
 
@@ -63,7 +65,7 @@ const addNewObjects = async () => {
 
 
 
-    const client = new MongoClient('mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority', {
+    const client = new MongoClient(mongoConnect, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });

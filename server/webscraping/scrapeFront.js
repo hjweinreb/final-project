@@ -6,6 +6,10 @@ const { MongoClient } = require('mongodb');
 const assert = require('assert');
 
 
+let mongoConnect = process.env.MONGOURI
+
+
+
 states = ((Object.values(countryRegions.states)))
 
 let objectArray = [];
@@ -34,7 +38,7 @@ const addNewObjects = async (req, res) => {
 
 
 
-    const client = new MongoClient("mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority", {
+    const client = new MongoClient(mongoConnect, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     });
@@ -128,8 +132,8 @@ const addNewObjects = async (req, res) => {
                             }
 
                         }
-                        
-                        
+
+
                         //console.log(newDatabaseObject);
 
                     })
@@ -183,7 +187,7 @@ const addNewObjects = async (req, res) => {
 }
 
 const batchExport = async () => {
-    const uri = "mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = mongoConnect;
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true

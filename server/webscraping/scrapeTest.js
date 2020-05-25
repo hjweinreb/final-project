@@ -1,8 +1,9 @@
 const path = require('path');
 const envPath = path.resolve(__dirname + '/../.env')
 
-console.log(envPath)
 require('dotenv').config({ path: envPath })
+
+let mongoConnect = process.env.MONGOURI
 
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
@@ -21,7 +22,6 @@ let savedLinks;
 let makeObject = false;
 // const states = [{name: 'virginia'}]
 
-console.log(process.env)
 
 const getConvidInfo = async () => {
     const response = await fetch('https://www.livescience.com/coronavirus-resources-state-local-health-departments.html')
@@ -29,7 +29,7 @@ const getConvidInfo = async () => {
 }
 
 const getDatabases = async () => {
-    const uri = "mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = mongoConnect;
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -140,7 +140,7 @@ getLinks()
 
 
 const batchExport = async () => {
-    const uri = "mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = mongoConnect;
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -163,7 +163,7 @@ const batchExport = async () => {
 
 const checkingDuplicates = async () => {
 
-    const uri = "mongodb+srv://dbAdmin:lizard882@cluster0-1tqzq.mongodb.net/test?retryWrites=true&w=majority";
+    const uri = mongoConnect;
     const client = new MongoClient(uri, {
         useNewUrlParser: true,
         useUnifiedTopology: true
